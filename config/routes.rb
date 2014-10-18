@@ -53,4 +53,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root to: "pages#front"
+  get 'home', to: "posts#index"
+  resources :posts
+  resources :categories
+  resources :comments
+  resources :letters
+  resources :users, only: [:show, :create, :edit, :update]
 end
