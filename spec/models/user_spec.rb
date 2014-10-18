@@ -8,4 +8,5 @@ describe User do
   it { should validate_uniqueness_of(:user_name) }
   it { should have_many(:posts) }
   it { should have_many(:letters) }
+  it { should have_many(:comments) }
 end
