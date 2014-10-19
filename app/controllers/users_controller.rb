@@ -18,7 +18,8 @@ class UsersController < ApplicationController
       flash[:success] = "You have registered."
       redirect_to sign_in_path
     else
-      flash[:danger] = result.error_message
+      flash[:danger] = "There was an error."
+      binding.pry
       render :new
     end
   end
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :password)
+    params.require(:user).permit!
   end
 
   def set_user
