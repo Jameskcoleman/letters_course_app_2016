@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user
   before_action :require_creator, only: [:edit, :update]
 
   def index
-    @posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    @posts = Post.all.sort_by{|x| x.created_at}.reverse
   end
 
   def show
-    @comment = Comment.new
+    @comments = @post.comments
   end
 
   def new
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your post was created."
       redirect_to posts_path
     else
+      flash[:danger] = "There was an error."
       render :new
     end
   end
@@ -39,21 +40,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @results = Post.search_by_title(params[:search_term])
+  end
+
   def comment
-    @comment = Comment.create(commentable: @post, creator: current_user, vote: params[:comment])
+    @comment = Comment.create(commentable: @post, creator: current_user, body: params[:body])
 
     respond_to do |format|
       format.html do
         if @comment.valid?
-         flash[:notice] = 'Your vote was counted.'
+          flash[:notice] = 'Your comment was created.'
         else
           flash[:error] = 'There was an error.'
         end
-      redirect_to :back
+        redirect_to :back
       end
       format.js
-      end
     end
+  end
 
   private
 
