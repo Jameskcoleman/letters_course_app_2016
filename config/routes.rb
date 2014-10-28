@@ -61,9 +61,11 @@ Rails.application.routes.draw do
   resources :comments
   resources :letters
   resources :sessions
-  resources :users, only: [:show, :create, :edit, :update]
+  resources :users
   get 'register', to: "users#new"
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'
   get 'search', to: 'posts#search'
+  get 'posts/:id/newcomment', to: 'posts#newcomment'
+  post '/login', to: 'sessions#create'
 end

@@ -9,6 +9,7 @@ class LettersController < ApplicationController
 
   def show
     @comments = @letter.comments
+    @comment = Comment.new
   end
 
   def new
@@ -34,7 +35,7 @@ class LettersController < ApplicationController
 
     if @letter.update(letter_params)
       flash[:notice] = "The letter was updated."
-      redirect_to letter_path(@post)
+      redirect_to letter_path(@letter)
     else
       render :edit
     end
@@ -44,30 +45,15 @@ class LettersController < ApplicationController
     @results = Letter.search_by_title(params[:search_term])
   end
 
-  def comment
-    @comment = Comment.create(commentable: @letter, creator: current_user, body: params[:body])
 
-    respond_to do |format|
-      format.html do
-        if @comment.valid?
-          flash[:notice] = 'Your comment was created.'
-        else
-          flash[:error] = 'There was an error.'
-        end
-        redirect_to :back
-      end
-      format.js
-    end
-  end
-
-  private
+private
 
   def letter_params
-    params.require(:letter).permit!
+    params.require(:letter).permit(:title, :body, category_ids: [])
   end
 
   def set_letter
-    @letter = Letter.find(params[:id])
+    @letter =Letter.find(params[:id])
   end
 
   def require_creator

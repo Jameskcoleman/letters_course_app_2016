@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 
 gem 'bcrypt-ruby', '=3.1.0'
 
+
 group :development, :test do
   gem 'rspec-rails', '2.99'
   gem 'fabrication'

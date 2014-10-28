@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -44,23 +45,8 @@ class PostsController < ApplicationController
     @results = Post.search_by_title(params[:search_term])
   end
 
-  def comment
-    @comment = Comment.create(commentable: @post, creator: current_user, body: params[:body])
 
-    respond_to do |format|
-      format.html do
-        if @comment.valid?
-          flash[:notice] = 'Your comment was created.'
-        else
-          flash[:error] = 'There was an error.'
-        end
-        redirect_to :back
-      end
-      format.js
-    end
-  end
-
-  private
+private
 
   def post_params
     params.require(:post).permit(:title, :body, category_ids: [])
