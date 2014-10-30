@@ -29,7 +29,10 @@
           <p>
             <small>Posted by <%= @post.creator.user_name %>, <%= display_datetime(@post.created_at) %></small>
           </p>
-        </div>
+          <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
+            <div><%= link_to "[Edit this post]",edit_post_path(@post) %></div>
+          <% end %>
+
       </div>
         <% @comments.each do |comment| %>
           <%= render 'comments/comment', comment: comment %>

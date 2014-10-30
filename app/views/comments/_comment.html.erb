@@ -4,7 +4,13 @@
   <div class="col-sm-11">
     <div class="well">
       <p><%= comment.body %></p>
-    <small>Posted by <%= comment.creator.user_name %>, <%= display_datetime(comment.created_at) %></small>
+    <small>Posted by <%= comment.creator.user_name %>, <%= display_datetime(comment.created_at) %>
+      <% if is_active?(portfolios_path) %>
+        , in response to <a href="<%= comment.commentable_type.downcase.pluralize %>/<%= comment.commentable_id %>">this <%= comment.commentable_type.downcase %></a>
+      <% end %>
+    </small>
     </div>
   </div>
 </div>
+
+
