@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   resources :letters
   resources :sessions
   resources :users
+  resources :portfolios
   get 'register', to: "users#new"
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'

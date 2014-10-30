@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Letters Course</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,18 +22,15 @@
   <body>
     <%= render 'shared/header' %>
     <div class="container">
-      <div class="row">
-        <h1>Letters</h1>
+      <div class='jumbotron'>
+        <div class="row">
+          <h2>Portfolios</h2>
+        </div>
+        <ul>
+        <% @users.each do |user| %>
+          <li><h3><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h3></li>
+        <% end %>
       </div>
-      <div class="row">  
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../letters/new" role="button">Create New Letter &raquo;
-          </a>
-        </p>
-      </div>
-      <% @letters.each do |letter| %>
-        <%= render 'letter', letter: letter %>
-      <% end %>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

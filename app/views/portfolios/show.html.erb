@@ -23,16 +23,19 @@
     <%= render 'shared/header' %>
     <div class="container">
       <div class="row">
-        <h1>Letters</h1>
+        <h1>Portfolio of <%= @user.user_name %></h1>
       </div>
-      <div class="row">  
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../letters/new" role="button">Create New Letter &raquo;
-          </a>
-        </p>
-      </div>
+      <h2>Letters</h2>
       <% @letters.each do |letter| %>
         <%= render 'letter', letter: letter %>
+      <% end %>
+      <h2>Posts</h2>
+      <% @posts.each do |post| %>
+        <%= render 'post', post: post %>
+      <% end %>
+      <h2>Comments</h2>
+      <% @comments.each do |comment| %>
+        <%= render 'comment', comment: comment %>
       <% end %>
     </div>
 

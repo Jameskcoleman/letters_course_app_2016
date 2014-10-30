@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="jumbotron">
+    <h2><%= link_to("#{letter.title}", letter_path(letter))%></h2>
+    <p><%= letter.body.html_safe %> </p>
+    <p>
+      <small>Posted by <%= letter.creator.user_name %>, <%= display_datetime(letter.created_at) %></small>
+    </p>
+    <small>
+    <span>
+      <%= link_to("#{letter.comments.size} comments", letter_path(letter)) %>
+    </span>
+  </small>
+  </div>
+</div>
