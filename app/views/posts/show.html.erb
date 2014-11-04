@@ -1,81 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+<%= render 'shared/header' %>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h2><%= link_to("#{@post.title}", post_path(@post))%></h2>
+      <p><%= @post.body %> </p>
+      <p>
+        <small>Posted by <%= @post.creator.user_name %>, <%= display_datetime(@post.created_at) %></small>
+      </p>
+      <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
+        <div><%= link_to "[Edit this post]",edit_post_path(@post) %></div>
+      <% end %>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/my-styles.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-    <%= render 'shared/header' %>
-    <div class="container">
-      <div class="row">
-        <div class="jumbotron">
-          <h2><%= link_to("#{@post.title}", post_path(@post))%></h2>
-          <p><%= @post.body %> </p>
-          <p>
-            <small>Posted by <%= @post.creator.user_name %>, <%= display_datetime(@post.created_at) %></small>
-          </p>
-          <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
-            <div><%= link_to "[Edit this post]",edit_post_path(@post) %></div>
-          <% end %>
-
+  </div>
+    <% @comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+    <div class='row'>
+      <div class="col-sm-1">
       </div>
-        <% @comments.each do |comment| %>
-          <%= render 'comments/comment', comment: comment %>
-        <% end %>
-        <div class='row'>
-          <div class="col-sm-1">
-          </div>
-          <div class="col-sm-11">
-            <div class="well">
-              <h3>Add a comment:</h3>
-              <%= form_for @comment, :url => comments_path(:commentable_type => "post", :commentable_id => @post.id) do |f| %>
-                <div class="control-group">
-                  <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
-                </div>
-                <div class="row">
-                  <div class="col-sm-11">
-                    </br>
-                    <%= f.submit "Post comment", class: 'btn btn-primary' %>
-                  </div>
-                </div>
+      <div class="col-sm-11">
+        <div class="well">
+          <h3>Add a comment:</h3>
+          <%= form_for @comment, :url => comments_path(:commentable_type => "post", :commentable_id => @post.id) do |f| %>
+            <div class="control-group">
+              <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
+            </div>
+            <div class="row">
+              <div class="col-sm-11">
+                </br>
+                <%= f.submit "Post comment", class: 'btn btn-primary' %>
               </div>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+  </div>
+</div>
