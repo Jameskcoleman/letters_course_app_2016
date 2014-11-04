@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   get 'register', to: "users#new"
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'
-  get 'search', to: 'posts#search'
+  get 'search', to: 'search#index'
   get 'posts/:id/newcomment', to: 'posts#newcomment'
   post '/login', to: 'sessions#create'
 end
