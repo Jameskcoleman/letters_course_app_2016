@@ -17,3 +17,8 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
+
+deployment:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
