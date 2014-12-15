@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
 
-  index_name "blog-engine-#{Rails.env}"
+  index_name BONSAI_INDEX_NAME
 
   mapping do
     indexes :id, index: :not_analyzed
