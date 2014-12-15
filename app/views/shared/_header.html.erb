@@ -14,17 +14,24 @@
         <li class="<%= is_active?(posts_path) %>"><%= link_to "Discussions", posts_path %></li>
         <li class="<%= is_active?(letters_path) %>"><%= link_to "Letters", letters_path %></li>
         <li class="<%= is_active?(portfolios_path) %>"><%= link_to "Portfolios", portfolios_path %></li>
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">User <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/portfolios/<%= current_user.id %>">Signed in as <%= current_user.user_name %></a></li>
+            <li class="divider"></li>
+            <li><a href="/sign_out">Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>
           <%= form_tag search_path, method: :get, class: "navbar-form col-md-3" do %>
             <div class="form-group">
-              <%= text_field_tag :query, params[:query], autocomplete: :off, placeholder: 'e.g. Ruby' %>
+              <%= text_field_tag :query, params[:query], autocomplete: :off %>
               <%= submit_tag('Search') %>
             </div>
           <% end %>
         </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/sign_out">Sign Out</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
