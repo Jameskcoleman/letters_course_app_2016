@@ -22,3 +22,11 @@ test:
   pool: 5
   username: postgres
   password: 2postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: blog_production
+  pool: 5
+  username: postgres
+  password: 2postgres
