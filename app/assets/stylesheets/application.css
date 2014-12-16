@@ -12,5 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require my-styles
+ *= require my-styles.css.scss
  */
