@@ -40,7 +40,6 @@ gem 'spring',        group: :development
 gem 'bcrypt-ruby', '=3.1.0'
 
 gem "ckeditor"
-gem "non-stupid-digest-assets"
 gem 'rails_12factor'
 
 gem 'elasticsearch-model'

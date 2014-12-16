@@ -82,7 +82,6 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     multipart-post (2.0.0)
-    non-stupid-digest-assets (1.0.4)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -184,7 +183,6 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
-  non-stupid-digest-assets
   pg
   pry
   pry-nav
