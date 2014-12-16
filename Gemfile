@@ -45,6 +45,7 @@ gem 'rails_12factor'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
+gem 'paratrooper'
 
 group :development, :test do
   gem 'rspec-rails', '2.99'
