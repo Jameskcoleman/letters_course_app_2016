@@ -41,8 +41,9 @@ gem 'bcrypt-ruby', '=3.1.0'
 
 gem "ckeditor"
 
-gem "tire"
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.99'

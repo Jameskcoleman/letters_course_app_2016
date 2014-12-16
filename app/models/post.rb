@@ -1,6 +1,7 @@
+require 'elasticsearch/model'
 class Post < ActiveRecord::Base
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   has_many :comments, as: :commentable
 
@@ -11,22 +12,5 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
 
-  index_name BONSAI_INDEX_NAME
-
-  mapping do
-    indexes :id, index: :not_analyzed
-    indexes :title, analyzer: 'snowball', boost: 100
-    indexes :body, analyzer: 'snowball'
-    indexes :created_at, type: 'date', index: :not_analyzed
-  end
-
-  def to_indexed_json
-    {
-      id: id,
-      title: title,
-      body: body,
-      created_at: created_at
-    }.to_json
-  end
-
 end
+Post.__elasticsearch__.import
