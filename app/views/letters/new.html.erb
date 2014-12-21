@@ -1,29 +1,42 @@
-<%= render 'shared/header' %>
-<div class="container">
-  <div class="row">
-    <div class="jumbotron">
-      <%= form_for @letter do |f| %>
-        <div class='row'>
-          <div class='control-group'>
-            <%= f.label :title %>
-            </br>
-            <%= f.text_field :title, class: "col-md-8" %>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='control-group'>
-            <%= f.label :body %>
-            </br>
-            <%= f.cktext_area :body, rows: 12, class: "col-md-8" %>
-          </div>
-        </div>
-        </br>
-        <div class='row'>
-          <div class='control-group'>
-            <%= f.submit(@letter.new_record? ? 'Create letter' : 'Update letter', class: 'btn btn-primary')%>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<script type='text/javascript' charset='UTF-8'>
+  $(document).ready(function(){
+    $('form[data-remote]').bind('ajax:before', function(){
+      for (instance in CKEDITOR.instances){
+        CKEDITOR.instances[instance].updateElement();
+      }
+    });
+  });
+</script>
+<%= form_for @letter, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+      <%= f.cktext_area :body, :ckeditor => {:language => 'uk'} %>
+<% end %>
+
+# <%= render 'shared/header' %>
+# <div class="container">
+#   <div class="row">
+#     <div class="jumbotron">
+#       <%= form_for @letter do |f| %>
+#         <div class='row'>
+#           <div class='control-group'>
+#             <%= f.label :title %>
+#             </br>
+#             <%= f.text_field :title, class: "col-md-8" %>
+#           </div>
+#         </div>
+#         <div class='row'>
+#           <div class='control-group'>
+#             <%= f.label :body %>
+#             </br>
+#             <%= f.cktext_area :body, rows: 12, class: "col-md-8" %>
+#           </div>
+#         </div>
+#         </br>
+#         <div class='row'>
+#           <div class='control-group'>
+#             <%= f.submit(@letter.new_record? ? 'Create letter' : 'Update letter', class: 'btn btn-primary')%>
+#           </div>
+#         </div>
+#       <% end %>
+#     </div>
+#   </div>
+# </div>
