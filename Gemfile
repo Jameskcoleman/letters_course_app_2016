@@ -45,7 +45,8 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
 gem 'paratrooper'
-gem 'tinymce-rails'
+gem 'ckeditor'
+gem 'non-stupid-digest-assets'
 
 group :development, :test do
   gem 'rspec-rails', '2.99'
