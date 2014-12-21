@@ -45,8 +45,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
 gem 'paratrooper'
-gem "ckeditor", :git => "https://github.com/adamico/ckeditor.git", 
-:branch => "rails-4-compatibility"
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'non-stupid-digest-assets'
 
 group :development, :test do
