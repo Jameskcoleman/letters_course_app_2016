@@ -10,7 +10,9 @@
       <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
         <div><%= link_to "[Edit this post]",edit_post_path(@post) %></div>
       <% end %>
-
+      <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
+        <div><%= link_to "[Delete this post]", @post, method: :delete, data: {confirm: "Are you sure?"} %></div>
+      <% end %>
   </div>
     <% @comments.each do |comment| %>
       <%= render 'comments/comment', comment: comment %>

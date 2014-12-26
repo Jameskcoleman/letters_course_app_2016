@@ -12,18 +12,13 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="<%= is_active?(posts_path) %>"><%= link_to "Discussions", posts_path %></li>
-        <li class="<%= is_active?(letters_path) %>"><%= link_to "Letters", letters_path %></li>
+        <li class="<%= is_active?(assignments_path) %>"><%= link_to "Letters", assignments_path %></li>
         <li class="<%= is_active?(portfolios_path) %>"><%= link_to "Portfolios", portfolios_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle">User <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/portfolios/<%= current_user.id %>">Signed in as <%= current_user.user_name %></a></li>
-            <li class="divider"></li>
-            <li><a href="/sign_out">Sign Out</a></li>
-          </ul>
-        </li>
+        <li><a href="/portfolios/<%= current_user.id %>"><%= current_user.user_name %></a></li>
+        <li class="divider"></li>
+        <li><a href="/sign_out">Sign Out</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

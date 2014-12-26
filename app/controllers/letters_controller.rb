@@ -1,27 +1,32 @@
 class LettersController < ApplicationController
-  before_action :set_letter, only: [:show, :edit, :update, :vote]
+  before_action :set_assignment_and_letter, only: [:edit, :update, :destroy]
   before_action :require_user
   before_action :require_creator, only: [:edit, :update]
 
   def index
-    @letters = Letter.all.sort_by{|x| x.created_at}.reverse
+    @assignment = Assignment.find(params[:assignment_id])
+    @letters = @assignment.letters
   end
 
   def show
+    @assignment = Assignment.find(params[:assignment_id])
+    @letter = @assignment.letters.find(params[:id])
     @comments = @letter.comments
     @comment = Comment.new
   end
 
   def new
-    @letter = Letter.new
+    @assignment = Assignment.find(params[:assignment_id])
+    @letter = @assignment.letters.new
   end
 
   def create
-    @letter = Letter.new(letter_params)
+    @assignment = Assignment.find(params[:assignment_id])
+    @letter = @assignment.letters.new(letter_params)
     @letter.creator = current_user
     if @letter.save
       flash[:notice] = "Your letter was created."
-      redirect_to letters_path
+      redirect_to home_path
     else
       flash[:danger] = "There was an error."
       render :new
@@ -32,13 +37,17 @@ class LettersController < ApplicationController
   end
 
   def update
-
     if @letter.update(letter_params)
       flash[:notice] = "The letter was updated."
-      redirect_to letter_path(@letter)
+      redirect_to assignment_letter_path(@assignment, @letter)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @letter.destroy
+    redirect_to assignments_path
   end
 
   def search
@@ -48,12 +57,13 @@ class LettersController < ApplicationController
 
 private
 
-  def letter_params
-    params.require(:letter).permit(:title, :body, category_ids: [])
+  def set_assignment_and_letter
+    @assignment = Assignment.find(params[:assignment_id])
+    @letter = @assignment.letters.find(params[:id])
   end
 
-  def set_letter
-    @letter =Letter.find(params[:id])
+  def letter_params
+    params.require(:letter).permit!
   end
 
   def require_creator

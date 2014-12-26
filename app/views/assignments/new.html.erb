@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <%= form_for [@letter.assignment, @letter] do |f| %>
+      <%= form_for @assignment do |f| %>
         <div class='row'>
           <div class='control-group'>
             <%= f.label :title %>
@@ -29,7 +29,7 @@
         </br>
         <div class='row'>
           <div class='control-group'>
-            <%= f.submit(@letter.new_record? ? 'Create letter' : 'Update letter', class: 'btn btn-primary')%>
+            <%= f.submit(@assignment.new_record? ? 'Create Assignment' : 'Update Assignment', class: 'btn btn-primary')%>
           </div>
         </div>
       <% end %>

@@ -2,13 +2,16 @@
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <h2><%= link_to("#{@letter.title}", letter_path(@letter))%></h2>
+      <h2><%= link_to("#{@letter.title}", assignment_letter_path(@assignment, @letter))%></h2>
       <p><%= @letter.body.html_safe %> </p>
       <p>
         <small>Posted by <%= @letter.creator.user_name %>, <%= display_datetime(@letter.created_at) %></small>
       </p>
       <% if logged_in? and (current_user == @letter.creator || current_user.admin?) %>
-        <div><%= link_to "[Edit this letter]",edit_letter_path(@letter) %></div>
+        <div><%= link_to "[Edit this letter]",edit_assignment_letter_path(@assignment, @letter) %></div>
+      <% end %>
+      <% if logged_in? and (current_user == @letter.creator || current_user.admin?) %>
+        <div><%= link_to "[Delete this letter]",assignment_letter_path(@assignment, @letter), method: :delete, data: {confirm: "Are you sure?"} %></div>
       <% end %>
     </div>
   </div>
@@ -19,15 +22,17 @@
       <div class="col-sm-1">
       </div>
       <div class="col-sm-11">
-        <h3>Add a comment:</h3>
-        <%= form_for @comment, :url => comments_path(:commentable_type => "letter", :commentable_id => @letter.id) do |f| %>
-          <div class="control-group">
-            <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
-          </div>
-          <div class="row">
-            <div class="col-sm-11">
-              </br>
-              <%= f.submit "Post comment", class: 'btn btn-primary' %>
+        <div class="well">
+          <h3>Add a comment:</h3>
+          <%= form_for @comment, :url => comments_path(:commentable_type => "letter", :commentable_id => @letter.id) do |f| %>
+            <div class="control-group">
+              <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
+            </div>
+            <div class="row">
+              <div class="col-sm-11">
+                </br>
+                <%= f.submit "Post comment", class: 'btn btn-primary' %>
+              </div>
             </div>
           </div>
         <% end %>

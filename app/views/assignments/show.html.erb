@@ -1,0 +1,21 @@
+<%= render 'shared/header' %>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h2><%= @assignment.title %></h2>
+      <h3><%= @assignment.body.html_safe %></h3>
+        <div class="row">  
+          <p>
+            <%= link_to "Create New Letter", new_assignment_letter_path(@assignment, @letter), class: "btn btn-lg btn-primary" %>
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="well">
+      <h2>Letters</h2>
+    </div>
+  </div>
+  <% @letters.each do |letter| %>
+    <%= render 'letters/letter', letter: letter %>
+  <% end %>

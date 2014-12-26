@@ -59,10 +59,12 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories
   resources :comments
-  resources :letters
   resources :sessions
   resources :users
   resources :portfolios
+  resources :assignments do
+    resources :letters
+  end
   get 'register', to: "users#new"
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'
