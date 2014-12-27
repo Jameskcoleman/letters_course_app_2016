@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       flash[:danger] = "There was an error."
-      binding.pry
       render :new
     end
   end
