@@ -1,7 +1,4 @@
-require 'elasticsearch/model'
 class Post < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
 
   has_many :comments, as: :commentable
 
@@ -13,4 +10,3 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
 
 end
-Post.__elasticsearch__.import

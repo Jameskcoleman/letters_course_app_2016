@@ -41,9 +41,6 @@ gem 'bcrypt-ruby', '=3.1.0'
 
 gem 'rails_12factor'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem 'bonsai-elasticsearch-rails'
 gem 'paratrooper'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'non-stupid-digest-assets'

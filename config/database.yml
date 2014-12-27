@@ -10,23 +10,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: blog_development
+  database: letters_course_app_development
   pool: 5
-  username: postgres
-  password: 2postgres
+  username: letters_course_app
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: blog_test
+  database: letters_course_app_test
   pool: 5
-  username: postgres
-  password: 2postgres
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: blog_production
-  pool: 5
-  username: postgres
-  password: 2postgres
+  username: letters_course_app
