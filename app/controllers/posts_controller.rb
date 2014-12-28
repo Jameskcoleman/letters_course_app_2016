@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your post was created."
       redirect_to posts_path
     else
-      flash[:danger] = "There was an error."
+      flash[:notice] = "There was an error."
       render :new
     end
   end

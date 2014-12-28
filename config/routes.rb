@@ -71,4 +71,7 @@ Rails.application.routes.draw do
   get 'search', to: 'search#index'
   get 'posts/:id/newcomment', to: 'posts#newcomment'
   post '/login', to: 'sessions#create'
+  get 'forgot_password', to: 'forgot_passwords#new'
+  resources :forgot_passwords, only: [:create]
+  get 'forgot_password_confirmation', to: 'forgot_passwords#confirm'
 end

@@ -20,18 +20,17 @@
 </div>
 
 <div class="container">
-  <div class='well'>
-    <%= form_tag '/login' do %>
-      <div class='control-group'>
+  <div class="well">
+    <%= form_tag forgot_passwords_path, html: { class: "sign_in"} do %>
+      <h2>Forgot Password?</h2>
+      <p>We will send you an email with a link that you can use to reset your password.</p>
+      <div class='form-group span-8'>
         <%= label_tag :email %>
         <%= text_field_tag :email %>
       </div>
-      <div class='control-group'>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
-      </div>
-      <%= submit_tag 'Login', class: 'btn btn-primary' %>
-    <% end %>
-    <%= link_to "Forgot Password?", forgot_password_path %>
+      <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+      <% end %>
+    </form>
   </div>
-</div>
+
+</div> <!-- /container -->
