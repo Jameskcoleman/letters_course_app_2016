@@ -74,4 +74,6 @@ Rails.application.routes.draw do
   get 'forgot_password', to: 'forgot_passwords#new'
   resources :forgot_passwords, only: [:create]
   get 'forgot_password_confirmation', to: 'forgot_passwords#confirm'
+  resources :password_resets, only: [:show, :create]
+  get 'expired_token', to: 'pages#expired_token'
 end

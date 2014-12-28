@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="well">
+    <%= form_tag password_resets_path, html: { class: "sign_in"} do %>
+      <h2>Reset Your Password</h2>
+      <div class='form-group span-8'>
+        <%= label_tag :password, "New Password" %>
+        <%= text_field_tag :password %>
+        <%= hidden_field_tag :token, @token %>
+      </div>
+      <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+      <% end %>
+    </form>
+  </div>
