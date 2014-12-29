@@ -17,25 +17,27 @@
     <% @comments.each do |comment| %>
       <%= render 'comments/comment', comment: comment %>
     <% end %>
-    <div class='row'>
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-11">
-        <div class="well">
-          <h3>Add a comment:</h3>
-          <%= form_for @comment, :url => comments_path(:commentable_type => "post", :commentable_id => @post.id) do |f| %>
-            <div class="control-group">
-              <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
-            </div>
-            <div class="row">
-              <div class="col-sm-11">
-                </br>
-                <%= f.submit "Post comment", class: 'btn btn-primary' %>
+    <% if logged_in? and current_user.user_name != 'Guest' %>
+      <div class='row'>
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-11">
+          <div class="well">
+            <h3>Add a comment:</h3>
+            <%= form_for @comment, :url => comments_path(:commentable_type => "post", :commentable_id => @post.id) do |f| %>
+              <div class="control-group">
+                <%= f.text_area :body, rows: 5, class: "col-sm-11" %>
+              </div>
+              <div class="row">
+                <div class="col-sm-11">
+                  </br>
+                  <%= f.submit "Post comment", class: 'btn btn-primary' %>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

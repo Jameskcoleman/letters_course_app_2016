@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def non_guest_user?
+    !(current_user.user_name == "Guest")
+  end
+
   def require_admin
     access_denied unless logged_in? and current_user.admin?
   end

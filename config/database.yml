@@ -10,13 +10,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: letters_course_app_development
+  database: letters_app_development
   pool: 5
-  username: letters_course_app
+  username: letters_app
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: letters_course_app_test
+  database: letters_app_test
   pool: 5
-  username: letters_course_app
+  username: letters_app

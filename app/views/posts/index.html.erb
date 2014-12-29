@@ -1,16 +1,13 @@
 <%= render 'shared/header' %>
 <div class="container">
-  <div class="row">
-    <div class="well">
-      <h1>Discussions</h1>
+  <% if logged_in? and current_user.user_name != 'Guest' %>
+    <div class="row">     
+      <p>
+        <a class="btn btn-lg btn-primary" href="../../posts/new" role="button">Create New Post &raquo;
+        </a>
+      </p>
     </div>
-  </div>
-  <div class="row">     
-    <p>
-      <a class="btn btn-lg btn-primary" href="../../posts/new" role="button">Create New Post &raquo;
-      </a>
-    </p>
-  </div>
+  <% end %>
   <% @posts.each do |post| %>
     <%= render 'post', post: post %>
   <% end %>

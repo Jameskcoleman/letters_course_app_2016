@@ -6,7 +6,9 @@
     </div>
     <ul>
     <% @users.each do |user| %>
-      <li><h3><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h3></li>
+      <% if user.user_name != "Admin" and user.user_name != "Guest" %>
+        <li><h3><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h3></li>
+      <% end %>
     <% end %>
   </div>
 </div>

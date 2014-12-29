@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.create(commentable: @commentable, creator: current_user, body: params.require(:comment).permit![:body])
     respond_to do |format|
-      format.html {redirect_to :controller => @commentable.class.to_s.pluralize.downcase, :action => :show, :id => @commentable.id}
+      format.html {redirect_to posts_path}
     end
   end
 

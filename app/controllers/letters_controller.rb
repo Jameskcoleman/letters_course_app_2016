@@ -26,7 +26,7 @@ class LettersController < ApplicationController
     @letter.creator = current_user
     if @letter.save
       flash[:notice] = "Your letter was created."
-      redirect_to home_path
+      redirect_to assignment_path(@assignment)
     else
       flash[:danger] = "There was an error."
       render :new

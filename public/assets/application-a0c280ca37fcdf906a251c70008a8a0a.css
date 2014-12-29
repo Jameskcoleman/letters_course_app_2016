@@ -1,10 +1,11 @@
-/* line 1, /Users/jc/projects/letters_course_app/app/assets/stylesheets/my-styles.css.scss */
-html * {
-  font-family: palatino;
+/* line 1, /Users/jc/Projects/letters_course_app/app/assets/stylesheets/my-styles.css.scss */
+html {
+  font-family: helvetica;
 }
 
-/* line 5, /Users/jc/projects/letters_course_app/app/assets/stylesheets/my-styles.css.scss */
+/* line 5, /Users/jc/Projects/letters_course_app/app/assets/stylesheets/my-styles.css.scss */
 body {
+  font-family: helvetica;
   padding-top: 70pt;
   margin: 0;
   background: url(/assets/background3.jpg);

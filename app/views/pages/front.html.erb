@@ -7,13 +7,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Letters Course</a>
+      <a class="navbar-brand" href="/">Letters Course</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -28,5 +25,6 @@
       </a>
       <a class="btn btn-lg btn-success" href="../../users/new" role="button">Create an account &raquo;</a>
     </p>
+    <div><%= link_to "Continue As Guest", sessions_path(:email => "guest@mail.com", :password => "guest"), method: :post %></div>
   </div>
 </div><!-- /.container -->
