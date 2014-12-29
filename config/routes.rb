@@ -54,8 +54,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "pages#front"
-  get 'home', to: "posts#index"
+  root to: "sessions#new"
+  get 'home', to: "materials#index"
   resources :posts
   resources :categories
   resources :comments
@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   resources :assignments do
     resources :letters
   end
+  resources :materials
   get 'register', to: "users#new"
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'

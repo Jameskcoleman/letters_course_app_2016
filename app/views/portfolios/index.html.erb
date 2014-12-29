@@ -4,6 +4,9 @@
     <div class="row">
       <h2>Portfolios</h2>
     </div>
+    <% if logged_in? and current_user.admin? %>
+      <div><%= link_to "Create New User",new_user_path, class: "btn btn-lg btn-primary" %></div>
+    <% end %>
     <ul>
     <% @users.each do |user| %>
       <% if user.user_name != "Admin" and user.user_name != "Guest" %>

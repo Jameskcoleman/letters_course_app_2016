@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
+  before_action :require_admin, only: [:new, :create]
 
   def show
     @user = User.find(params[:id])

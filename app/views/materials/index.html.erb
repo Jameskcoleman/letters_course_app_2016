@@ -1,0 +1,13 @@
+<%= render 'shared/header' %>
+<div class="container">
+  <% @materials.each do |material| %>
+    <div class='jumbotron'>
+      <div class="row">
+        <p><%= material.body.html_safe %>
+      </div>
+      <% if logged_in? and current_user.admin? %>
+        <div><%= link_to "Edit", edit_material_path(material), class: "btn btn-lg btn-primary" %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -8,10 +8,11 @@
         <small>Posted by <%= @post.creator.user_name %>, <%= display_datetime(@post.created_at) %></small>
       </p>
       <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
-        <div><%= link_to "[Edit this post]",edit_post_path(@post) %></div>
+        <div><%= link_to "Edit this post",edit_post_path(@post), class: "btn btn-lg btn-success" %></div>
       <% end %>
       <% if logged_in? and (current_user == @post.creator || current_user.admin?) %>
-        <div><%= link_to "[Delete this post]", @post, method: :delete, data: {confirm: "Are you sure?"} %></div>
+        </br>
+        <div><%= link_to "Delete this post", @post, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %></div>
       <% end %>
   </div>
     <% @comments.each do |comment| %>
