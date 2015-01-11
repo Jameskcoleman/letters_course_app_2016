@@ -12,6 +12,7 @@ class PasswordResetsController < ApplicationController
     user = User.where(token: params[:token]).first
     if user
       user.password = params[:password]
+      user.user_name = params[:user_name]
       user.generate_token
       user.save
       flash[:success] = "Your password has been changed. Please sign in."
