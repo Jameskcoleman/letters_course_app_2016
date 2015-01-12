@@ -1,11 +1,17 @@
 class CommentsController < ApplicationController
-  before_filter :find_commentable
+  before_filter :find_commentable, only: :create
 
   def create
     @comment = @commentable.comments.create(commentable: @commentable, creator: current_user, body: params.require(:comment).permit![:body])
     respond_to do |format|
       format.html {redirect_to posts_path}
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to home_path
   end
 
   private

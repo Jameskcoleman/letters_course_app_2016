@@ -25,16 +25,23 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
+    @assignment = Assignment.find(params[:id])
   end
 
   def update
-
+    @assignment = Assignment.find(params[:id])
     if @assignment.update(assignment_params)
       flash[:notice] = "The assignment was updated."
       redirect_to assignments_path(@assignment)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @assignment = Assignment.find(params[:id])
+    @assignment.destroy
+    redirect_to assignments_path
   end
 
 private

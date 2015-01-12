@@ -39,6 +39,11 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt-ruby (3.1.0)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.5)
@@ -80,6 +85,7 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (4.0.2)
     minitest (5.4.2)
     multi_json (1.10.1)
     netrc (0.8.0)
@@ -181,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (= 3.1.0)
+  carrierwave
   ckeditor!
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.2.0)
@@ -189,6 +196,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
+  mini_magick
   non-stupid-digest-assets
   paratrooper
   pg

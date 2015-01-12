@@ -45,6 +45,9 @@ gem 'paratrooper'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'non-stupid-digest-assets'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'rspec-rails', '2.99'
   gem 'fabrication'
