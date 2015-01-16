@@ -34,6 +34,8 @@ CKEDITOR.editorConfig = function( config )
 
   config.allowedContent = true;
 
+  config.tabSpaces = 5;
+
   // Rails CSRF token
   config.filebrowserParams = function(){
     var csrf_token, csrf_param, meta,
