@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  include Voteable
 
   has_many :comments, as: :commentable
 
