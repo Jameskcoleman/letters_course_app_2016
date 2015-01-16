@@ -1,7 +1,7 @@
 <div class="row">
   <div class="jumbotron">
     <h3><%= link_to("#{post.title}", post_path(post))%></h3>
-    <p><%= post.body.truncate(370).html_safe %> </p>
+    <p><%= post.body.truncate(570).html_safe %> </p>
     <p>
       <small>Posted by <%= post.creator.user_name %>, <%= display_datetime(post.created_at) %></small>
     </p>
