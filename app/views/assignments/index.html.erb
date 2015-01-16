@@ -10,7 +10,7 @@
     <ul>
     <% @assignments.each do |assignment| %>
       <li>
-        <h2><%= link_to("#{assignment.title}", assignment_path(assignment))%></h2>
+        <h3><%= link_to("#{assignment.title}", assignment_path(assignment))%></h3>
       </li>
       <br>
     <% end %>

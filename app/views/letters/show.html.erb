@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="jumbotron">
-      <h2><%= link_to("#{@letter.title}", assignment_letter_path(@assignment, @letter))%></h2>
+      <h3><%= @letter.title %></h3>
       <p><%= @letter.body.html_safe %> </p>
       <p>
         <small>Posted by <%= @letter.creator.user_name %>, <%= display_datetime(@letter.created_at) %></small>
