@@ -27,7 +27,7 @@
         <% if current_user.user_name == 'Guest' %>
           <span class="glyphicon glyphicon-heart"></span>
         <% end %>
-        <span id='letter_<%=@letter.id%>_votes'>: <%= @letter.total_votes %>. </span>
+        <span id='letter_<%=@letter.id%>_votes'><%= @letter.total_votes %></span>
         <%= link_to("Comments: #{@letter.comments.length}", assignment_letter_path(@letter.assignment_id, @letter)) %>
         <br/>
       </span>
