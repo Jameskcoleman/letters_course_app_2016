@@ -50,6 +50,21 @@ class PostsController < ApplicationController
     @results = Post.search_by_title(params[:search_term])
   end
 
+  def vote
+    @post = Post.find(params[:id])
+    @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+
+    respond_to do |format|
+      format.html do
+        if !@vote.valid?
+          flash[:error] = 'You can only favorite a post once.'
+        end
+      redirect_to :back
+      end
+      format.js
+      end
+  end
+
 
 private
 

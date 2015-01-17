@@ -6,9 +6,23 @@
       <small>Posted by <%= letter.creator.user_name %>, <%= display_datetime(letter.created_at) %></small>
     </p>
     <small>
-    <span>
-
-    </span>
-  </small>
+      <span>
+        <% if logged_in? and current_user.user_name != 'Guest' %>
+          <%= link_to vote_assignment_letter_path(letter.assignment_id, letter, vote: true), method: 'post' do%>
+            <% if Vote.where("voteable_type = 'Letter' AND voteable_id = ? AND user_id = ?", letter.id, current_user.id) != [] %>
+              <span class="glyphicon glyphicon-heart"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-heart-empty"></span>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if current_user.user_name == 'Guest' %>
+          <span class="glyphicon glyphicon-heart"></span>
+        <% end %>
+        <span id='letter_<%=letter.id%>_votes'>: <%= letter.total_votes %>. </span>
+        <%= link_to("Comments: #{letter.comments.length}", assignment_letter_path(letter.assignment_id, letter)) %>
+        <br/>
+      </span>
+    </small>
   </div>
 </div>

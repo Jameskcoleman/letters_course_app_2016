@@ -54,6 +54,22 @@ class LettersController < ApplicationController
     @results = Letter.search_by_title(params[:search_term])
   end
 
+  def vote
+    @assignment = Assignment.find(params[:assignment_id])
+    @letter = @assignment.letters.find(params[:id])
+    @vote = Vote.create(voteable: @letter, creator: current_user, vote: params[:vote])
+
+    respond_to do |format|
+      format.html do
+        if !@vote.valid?
+          flash[:error] = 'You can only favorite a letter once.'
+        end
+      redirect_to :back
+      end
+      format.js
+      end
+  end
+
 
 private
 

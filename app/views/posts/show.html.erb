@@ -14,6 +14,20 @@
         </br>
         <div><%= link_to "Delete this post", @post, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %></div>
       <% end %>
+    <% if logged_in? and current_user.user_name != 'Guest' %>
+      <%= link_to vote_post_path(@post, vote: true), method: 'post' do%>
+        <% if Vote.where("voteable_type = 'Post' AND voteable_id = ? AND user_id = ?", @post.id, current_user.id) != [] %>
+          <span class="glyphicon glyphicon-heart"></span>
+        <% else %>
+          <span class="glyphicon glyphicon-heart-empty"></span>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if current_user.user_name == 'Guest' %>
+      <span class="glyphicon glyphicon-heart"></span>
+    <% end %>
+    <span id='post_<%=@post.id%>_votes'>: <%= @post.total_votes %></span>
+    <br/>
   </div>
     <% @comments.each do |comment| %>
       <%= render 'comments/comment', comment: comment %>

@@ -57,14 +57,26 @@ Rails.application.routes.draw do
 
   root to: "sessions#new"
   get 'home', to: "materials#index"
-  resources :posts
+  resources :posts do
+    member do
+      post 'vote'
+    end
+  end
   resources :categories
-  resources :comments
+  resources :comments do
+    member do
+      post 'vote'
+    end
+  end
   resources :sessions
   resources :users
   resources :portfolios
   resources :assignments do
-    resources :letters
+    resources :letters do
+      member do
+        post 'vote'
+      end
+    end
   end
   resources :materials
   get 'register', to: "users#new"
