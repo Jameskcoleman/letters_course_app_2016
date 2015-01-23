@@ -8,7 +8,7 @@
         <small>Posted by <%= @letter.creator.user_name %>, <%= display_datetime(@letter.created_at) %></small>
       </p>
       <% if logged_in? and (current_user == @letter.creator || current_user.admin?) %>
-        <div><%= link_to "Edit this letter",edit_assignment_letter_path(@assignment, @letter), class: "btn btn-lg btn-success" %></div>
+        <div><%= link_to "Edit this letter",edit_assignment_letter_path(@assignment, @letter), class: "btn btn-sm btn-success" %></div>
       <% end %>
       <% if logged_in? and (current_user == @letter.creator || current_user.admin?) %>
         </br>
@@ -18,14 +18,14 @@
         <% if logged_in? and current_user.user_name != 'Guest' %>
           <%= link_to vote_assignment_letter_path(@letter.assignment_id, @letter, vote: true), method: 'post' do%>
             <% if Vote.where("voteable_type = 'Letter' AND voteable_id = ? AND user_id = ?", @letter.id, current_user.id) != [] %>
-              <span class="glyphicon glyphicon-heart"></span>
+              <i class="glyphicon glyphicon-heart"></i>
             <% else %>
-              <span class="glyphicon glyphicon-heart-empty"></span>
+              <i class="glyphicon glyphicon-heart-empty"></i>
             <% end %>
           <% end %>
         <% end %>
         <% if current_user.user_name == 'Guest' %>
-          <span class="glyphicon glyphicon-heart"></span>
+          <i class="glyphicon glyphicon-heart"></i>
         <% end %>
         <span id='letter_<%=@letter.id%>_votes'><%= @letter.total_votes %></span>
         <%= link_to("Comments: #{@letter.comments.length}", assignment_letter_path(@letter.assignment_id, @letter)) %>
@@ -38,9 +38,7 @@
     <% end %>
     <% if logged_in? and current_user.user_name != 'Guest' %>
       <div class='row'>
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-11">
+        <div class="col-sm-11 col-sm-offset-1">
           <div class="well">
             <h3>Add a comment:</h3>
             <%= form_for @comment, :url => comments_path(:commentable_type => "letter", :commentable_id => @letter.id) do |f| %>

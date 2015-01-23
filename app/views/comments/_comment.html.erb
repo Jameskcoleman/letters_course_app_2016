@@ -1,9 +1,7 @@
 <div class='row'>
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-11">
+  <div class="col-sm-11 col-sm-offset-1">
     <div class="well">
-      <p><%= comment.body %></p>
+      <p><%= simple_format comment.body %></p>
     <small>Posted by <%= comment.creator.user_name %>, <%= display_datetime(comment.created_at) %>
       <% if is_active?(portfolios_path) %>
         , in response to <a href="/<%= comment.commentable_type.downcase.pluralize %>/<%= comment.commentable_id %>">this <%= comment.commentable_type.downcase %></a>
@@ -17,14 +15,14 @@
           </br>
           <%= link_to vote_comment_path(comment, vote: true), method: 'post' do%>
             <% if Vote.where("voteable_type = 'Comment' AND voteable_id = ? AND user_id = ?", comment.id, current_user.id) != [] %>
-              <span class="glyphicon glyphicon-heart"></span>
+              <i class="glyphicon glyphicon-heart"></i>
             <% else %>
-              <span class="glyphicon glyphicon-heart-empty"></span>
+              <i class="glyphicon glyphicon-heart-empty"></i>
             <% end %>
           <% end %>
         <% end %>
         <% if current_user.user_name == 'Guest' %>
-          <span class="glyphicon glyphicon-heart"></span>
+          <i class="glyphicon glyphicon-heart"></i>
         <% end %>
         <span id='comment_<%=comment.id%>_votes'><%= comment.total_votes %></span>
         <br/>
