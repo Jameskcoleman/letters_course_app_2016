@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    @letters = @assignment.letters
+    @letters = @assignment.letters.order(created_at: :desc)
   end
 
   def new
