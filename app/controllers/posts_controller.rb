@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_creator, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.sort_by{|x| x.created_at}.reverse
+    @posts = Post.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

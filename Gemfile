@@ -48,6 +48,7 @@ gem 'non-stupid-digest-assets'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'voteable_jim'
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
   gem 'rspec-rails', '2.99'
