@@ -9,7 +9,7 @@
     <% end %>
     <ul>
     <% @users.each do |user| %>
-      <% if user.user_name != "Admin" and user.user_name != "Guest" %>
+      <% if user.user_name != "Admin" and user.user_name != "Guest" and user.user_name != "Carolyn Leigh Thomas" %>
         <li><h3><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h3></li>
       <% end %>
     <% end %>
