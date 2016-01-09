@@ -1,28 +1,22 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application has been designed to enable students in the course PY 260.360 Section 4: Letters from Afar:  Artists in Correspondence (taught in Spring Semester 2015 at the Peabody Institute of the Johns Hopkins University) to submit written work, comment on one another’s work, access course readings, and engage in discussion online.
 
-Things you may want to cover:
+Development Setup
 
-* Ruby version
+# Make sure the following are installed:
+Ruby 2.2.0
+Rails 4.1.1
+PostgreSQL
 
-* System dependencies
+# Within the project directory
+bundle
+rake db:setup
+rake db:seed
+rails s
 
-* Configuration
+# Visit: http://localhost:3000
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Guest login credentials:
+Email: guest@letterscourse.com
+Password: guest
