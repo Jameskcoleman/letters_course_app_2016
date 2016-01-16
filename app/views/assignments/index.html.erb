@@ -2,7 +2,7 @@
 <div class="container">
   <div class='jumbotron'>
     <div class="row">
-      <h2>Assignments</h2>
+      <h3>Assignments</h3>
       <% if logged_in? and current_user.admin? %>
         <div><%= link_to "Create New Assignment", new_assignment_path, class: "btn btn-lg btn-primary" %></div>
       <% end %>
@@ -10,7 +10,7 @@
     <ul>
     <% @assignments.each do |assignment| %>
       <li>
-        <h3><%= link_to("#{assignment.title}", assignment_path(assignment))%></h3>
+        <h4><%= link_to("#{assignment.title}", assignment_path(assignment))%></h4>
       </li>
     <% end %>
   </div>

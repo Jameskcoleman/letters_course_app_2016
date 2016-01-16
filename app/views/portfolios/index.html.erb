@@ -2,15 +2,14 @@
 <div class="container">
   <div class='jumbotron'>
     <div class="row">
-      <h2>Portfolios</h2>
+      <h3>Portfolios</h3>
     </div>
     <% if logged_in? and current_user.admin? %>
       <div><%= link_to "Create New User",new_user_path, class: "btn btn-lg btn-primary" %></div>
     <% end %>
-    <ul>
     <% @users.each do |user| %>
-      <% if user.user_name != "Admin" and user.user_name != "Guest" and user.user_name != "Carolyn Leigh Thomas" and user.user_name != "lichiachuang" %>
-        <li><h3><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h3></li>
+      <% if user.user_name != "Admin" and user.user_name != "Guest" %>
+        <h5><a href="/portfolios/<%= user.id %>"><%= user.user_name %></a><h5>
       <% end %>
     <% end %>
   </div>
